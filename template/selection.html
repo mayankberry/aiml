@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<form method="post" action="column_select">
+    {% csrf_token %}
+    {% for column in columns %}
+    <label for="{{ column }}" class="button-label">{{ column }}</label>
+    <input type="checkbox" class="button-checkbox" name="columns" value="{{ column }}"><br>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+<script>
+    const checkboxes = document.querySelectorAll('.button-checkbox');
+    const maxSelection = 2;
+
+    checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', () => {
+            const checkedCheckboxes = document.querySelectorAll('.button-checkbox:checked');
+            if (checkedCheckboxes.length > maxSelection) {
+                checkbox.checked = false;
+            }
+        });
+    });
+</script>
+
+{% endblock %}

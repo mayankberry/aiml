@@ -2,14 +2,24 @@
 
 {% block body %}
 
-<form method="post" action="column_select">
-    {% csrf_token %}
-    {% for column in columns %}
-    <label for="{{ column }}" class="button-label">{{ column }}</label>
-    <input type="checkbox" class="button-checkbox" name="columns" value="{{ column }}"><br>
-    {% endfor %}
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+
+<div class="container mw-screen-xl" id="formhandle2">
+    <div id="jumbo2">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8 text-center">
+                <h1 class="ls-tight fw-bolder display-4 mb-3 text-white">Choose 2 Columns</h1>
+                <form method="post" action="column_select">
+                    {% csrf_token %}
+                    {% for column in columns %}
+                    <label id="column_names" for="{{ column }}" class="button-label">{{ column }}</label>
+                    <input type="checkbox" class="button-checkbox" name="columns" value="{{ column }}"><br>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

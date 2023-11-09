@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import CsvFile
 
-# Register your models here.
+@admin.register(CsvFile)
+class CsvDataAdmin(admin.ModelAdmin):
+    list_display = ['file', 'id'] 
+    search_fields = ['file__name']  
